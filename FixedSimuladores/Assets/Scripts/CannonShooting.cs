@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CannonShooting : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform firePoint;
     public float bulletSpeed = 20f;
+    public Text infoText;
 
     void Update()
     {
@@ -25,6 +27,9 @@ public class CannonShooting : MonoBehaviour
         {
             rb.velocity = firePoint.forward * bulletSpeed;
         }
+
+        BulletInfo bulletInfo = bullet.AddComponent<BulletInfo>();
+        bulletInfo.Setup(bulletSpeed, infoText);
 
         Destroy(bullet, 1f);
     }

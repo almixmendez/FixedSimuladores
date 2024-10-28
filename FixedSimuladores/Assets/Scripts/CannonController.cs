@@ -18,6 +18,9 @@ public class CannonController : MonoBehaviour
         float xRotation = Mathf.Lerp(minXRotation, maxXRotation, xSlider.value);
         float yRotation = Mathf.Lerp(minYRotation, maxYRotation, ySlider.value);
 
+        Debug.Log(xRotation);
+        Debug.Log(yRotation);
+
         transform.rotation = Quaternion.Euler(yRotation, xRotation, 0f);
     }
 }

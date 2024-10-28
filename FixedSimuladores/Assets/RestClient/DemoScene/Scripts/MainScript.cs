@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 
 public class MainScript : MonoBehaviour {
 
-	private readonly string basePath = "https://jsonplaceholder.typicode.com";
+	private readonly string basePath = "https://simuladores-1-7f26a-default-rtdb.firebaseio.com/";
 	private RequestHelper currentRequest;
 
 	private void LogMessage(string title, string message) {
@@ -25,7 +25,7 @@ public class MainScript : MonoBehaviour {
 
 		RequestHelper requestOptions = null;
 
-		RestClient.GetArray<Post>(basePath + "/posts").Then(res => {
+		RestClient.GetArray<Post>(basePath + "/posts.json").Then(res => {
 			this.LogMessage("Posts", JsonHelper.ArrayToJsonString<Post>(res, true));
 			return RestClient.GetArray<Todo>(basePath + "/todos");
 		}).Then(res => {
@@ -85,7 +85,7 @@ public class MainScript : MonoBehaviour {
 	public void Put(){
 
 		currentRequest = new RequestHelper {
-			Uri = basePath + "/posts/1", 
+			Uri = basePath + "/posts/1.json", 
 			Body = new Post {
 				title = "foo",
 				body = "bar",
